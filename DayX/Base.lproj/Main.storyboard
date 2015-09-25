@@ -45,13 +45,7 @@
                             <constraint firstAttribute="bottom" secondItem="Gkp-sV-KHI" secondAttribute="bottom" id="men-5c-6rE"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="add" id="7oI-nA-t0B">
-                            <connections>
-                                <segue destination="Q2t-su-2bx" kind="show" identifier="addEntry" id="D6W-Pu-kYm"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="si5-vZ-f6B">
                         <nil key="title"/>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Day - X" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="bPG-ra-rgo">
@@ -60,8 +54,16 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7oI-nA-t0B">
+                            <connections>
+                                <segue destination="Q2t-su-2bx" kind="show" identifier="addEntry" id="D6W-Pu-kYm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="Gkp-sV-KHI" id="LZd-98-PBX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <customObject id="Jx6-sa-b7K" customClass="ListTableViewDataSource"/>
@@ -80,8 +82,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Details" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c19-Ez-iGF">
-                                <rect key="frame" x="266" y="14" width="97" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXD-dV-YfD">
+                                <rect key="frame" x="179" y="478" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="jeu-FR-6Kg"/>
+                                </constraints>
+                                <state key="normal" title="Clear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearButtonTapped:" destination="Q2t-su-2bx" eventType="touchUpInside" id="N9u-6t-t6S"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Details" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c19-Ez-iGF">
+                                <rect key="frame" x="252" y="84" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="5tW-HG-Tcn"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -90,9 +107,38 @@
                                     <outlet property="delegate" destination="Q2t-su-2bx" id="jyp-tg-wEa"/>
                                 </connections>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpD-Cs-iJU">
+                                <rect key="frame" x="99" y="142" width="431" height="198"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WpD-Cs-iJU" firstAttribute="top" secondItem="c19-Ez-iGF" secondAttribute="bottom" constant="28" id="0VJ-B8-v1Z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WpD-Cs-iJU" secondAttribute="trailing" constant="54" id="EGW-WT-FCL"/>
+                            <constraint firstItem="Qfj-Fl-de6" firstAttribute="top" secondItem="DXD-dV-YfD" secondAttribute="bottom" constant="48" id="Lrz-2c-4Xm"/>
+                            <constraint firstItem="Qfj-Fl-de6" firstAttribute="top" secondItem="WpD-Cs-iJU" secondAttribute="bottom" constant="216" id="NrW-yo-KaY"/>
+                            <constraint firstItem="WpD-Cs-iJU" firstAttribute="leading" secondItem="doT-hU-j1s" secondAttribute="leadingMargin" constant="83" id="Y7g-jc-rzv"/>
+                            <constraint firstItem="c19-Ez-iGF" firstAttribute="top" secondItem="tuK-4C-5D5" secondAttribute="bottom" constant="20" id="hSX-1m-KEq"/>
+                            <constraint firstItem="DXD-dV-YfD" firstAttribute="leading" secondItem="doT-hU-j1s" secondAttribute="leading" constant="179" id="hn4-kx-WiG"/>
+                            <constraint firstItem="c19-Ez-iGF" firstAttribute="centerX" secondItem="doT-hU-j1s" secondAttribute="centerX" id="sTq-Fy-zWE"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="eo3-kr-fq7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Lpo-jE-2dv">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="Q2t-su-2bx" id="N1C-Bh-NZP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="UITextView" destination="WpD-Cs-iJU" id="cm5-jd-GZA"/>
+                        <outlet property="clearButtonTapped" destination="DXD-dV-YfD" id="zHW-ER-2y0"/>
+                        <outlet property="textField" destination="c19-Ez-iGF" id="sZr-a3-w2y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMh-OG-soo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,6 +164,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="D6W-Pu-kYm"/>
+        <segue reference="oLX-oc-1ce"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,8 +7,11 @@
 //
 
 #import "ListViewController.h"
+#import "DetailViewController.h"
+#import "EntryController.h"
 
 @interface ListViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -22,6 +25,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)viewWillAppear:(BOOL)animated {
+   
+    [self.tableView reloadData];
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    DetailViewController *viewController = segue.
+    destinationViewController;
+    
+    Entry *entry = [EntryController sharedInstance].enties[indexPath.row];
+    
+    viewController.entry = entry;
+    
+    
 }
 
 @end

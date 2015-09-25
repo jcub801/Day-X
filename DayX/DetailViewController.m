@@ -7,15 +7,32 @@
 //
 
 #import "DetailViewController.h"
+#import "EntryController.h"
 
 @interface DetailViewController ()<UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextView *UITextView;
+@property (weak, nonatomic) IBOutlet UIButton *clearButtonTapped;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
 
 
 @end
 
 @implementation DetailViewController
-- (IBAction)textField:(id)sender {
+
+
+- (IBAction)saveButtonTapped:(id)sender {
+    
+    self.entry = [[EntryController sharedInstance] createEntryWithTitle:self.textField.text bodyText:self.UITextView.text];
+    
 }
+
+
+
+
+- (IBAction)textField:(id)sender {
+    }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,6 +42,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+}
+
+
+- (IBAction)clearButtonTapped:(id)sender {
+    self.textField.text = @"";
+    self.UITextView.text =@"";
+    //these clear the text fields when the clearbutton is tapped
+    
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
