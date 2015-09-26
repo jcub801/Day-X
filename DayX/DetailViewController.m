@@ -24,8 +24,18 @@
 
 - (IBAction)saveButtonTapped:(id)sender {
     
+    if (self.entry) {
+        self.entry.title = self.textField.text;
+        self.entry.bodyText = self.UITextView.text;
+        self.entry.timestamp = [NSDate date];
+    } else{
+        
+    
+    
     self.entry = [[EntryController sharedInstance] createEntryWithTitle:self.textField.text bodyText:self.UITextView.text];
     
+}
+    [[EntryController sharedInstance] save];
 }
 
 
@@ -37,6 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self updateWithEntry:self.entry];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +61,14 @@
     self.textField.text = @"";
     self.UITextView.text =@"";
     //these clear the text fields when the clearbutton is tapped
+    
+}
+
+
+
+-(void)updateWithEntry:(Entry *)entry {
+    self.textField.text = entry.title;
+    self.UITextView.text = entry.bodyText;
     
 }
 

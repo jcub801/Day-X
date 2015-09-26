@@ -94,9 +94,9 @@
 			isa = PBXGroup;
 			children = (
 				68FFDFDD1AD8144B009F5D0A /* AppDelegate.h */,
+				68FFDFDE1AD8144B009F5D0A /* AppDelegate.m */,
 				EB1000D51BB3A073000D5204 /* DetailViewController.h */,
 				EB1000D61BB3A073000D5204 /* DetailViewController.m */,
-				68FFDFDE1AD8144B009F5D0A /* AppDelegate.m */,
 				EB1000D21BB3953B000D5204 /* ListTableViewDataSource.h */,
 				EB1000D31BB3953B000D5204 /* ListTableViewDataSource.m */,
 				68FFDFE01AD8144B009F5D0A /* ListViewController.h */,

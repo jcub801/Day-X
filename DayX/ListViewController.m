@@ -30,18 +30,24 @@
    
     [self.tableView reloadData];
 }
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"viewEntry"]) {
+        
     
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     DetailViewController *viewController = segue.
     destinationViewController;
     
-    Entry *entry = [EntryController sharedInstance].enties[indexPath.row];
+    Entry *entry = [EntryController sharedInstance].entries[indexPath.row];
     
     viewController.entry = entry;
+    }
     
     
 }
+
 
 @end

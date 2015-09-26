@@ -10,7 +10,8 @@
 #import "Entry.h"
 
 @interface EntryController : NSObject
-@property (strong, nonatomic, readonly)NSArray *enties;
+
+@property (strong, nonatomic, readonly)NSArray *entries;
 
 + (EntryController *) sharedInstance;
 
@@ -18,6 +19,8 @@
 
 -(void)addEntry:(Entry *) entry;
 -(void)moveEntry:(Entry *)entry;
+
+-(void)save;
 
 
 
